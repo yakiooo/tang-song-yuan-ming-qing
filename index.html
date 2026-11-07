@@ -186,7 +186,7 @@ function gcardInner(c){
 return (c.supp ?'<span class="netflag" title="网络补充 · 谱系补录">补</span>':'') +
 '<div class="gn">' + esc(c.name) +'</div>' +
 '<div class="gt">' + esc(c.title) +'</div>' +
-'<div class="gy">' + esc(c.years) +'</div>' +
+'<div class="gy">' + esc(c.years) + (c.shi ? ' · ' + (c.shi.indexOf('史无') === 0 ? c.shi : '谥' + c.shi) : '') +'</div>' +
 (c.emp ?'<span class="gtag">' + esc(c.era) +'</span>':'');
 }
 function bindCard(el,c){
@@ -297,7 +297,7 @@ $('#gen-scaler').style.height=(GEN_H * k) +'px';
 }
 function drawGenEdges(){
 const svg=$('#gen-lines');
-if (!svg || window.innerWidth < 760) return;
+if (!svg || window.innerWidth < 760 || !Array.isArray(D.genEdges)) return;
 svg.setAttribute('viewBox','0 0 ' + GEN_W +' ' + (GEN_H || genCanvas.offsetHeight));
 const defs=
 '<defs><marker id="ga" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">' +
