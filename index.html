@@ -1590,7 +1590,7 @@ const TL_TOPICS=[
  {k:'reform',  n:'变法改制',  match:/变法|新政|改革|改制|两税法|一条鞭|考成法|行省制度|宣政院|军机处|杯酒释兵权|澶渊之盟|绍兴和议|南京条约|马关条约|辛丑条约/},
  {k:'war',     n:'战争军事',  match:/之战|之乱|大捷|海战|起义|侵华|联军|兵变|靖难|土木堡|亲征|北伐|灭金|灭北汉|攻|伐|叛军|战败|全军覆没/},
  {k:'diplo',   n:'民族外交',  match:/入藏|和亲|公主|吐蕃|条约|之盟|和议|下西洋|通使|纳贡|岁币|迁都|收复|台湾|西藏|尼布楚|对外|交流|安史之乱平定/},
- {k:'culture', n:'文化科技',  match:/大典|典籍|文学|诗歌|著作|思想|儒学|艺术|书画|建筑|工程|科技|航海|发明|公主|玄奘|传播|促进.*交流/}/
+ {k:'culture', n:'文化科技',  match:/大典|典籍|文学|诗歌|著作|思想|儒学|艺术|书画|建筑|工程|科技|航海|发明|公主|玄奘|传播|促进.*交流/},
  {k:'society', n:'民生经济',  match:/轻徭|薄赋|经济|农业|水利|人口|土地|商业|贸易|手工业|赋税|两税|荒|赈灾|民变|饥/}
 ];
 let tlTopic=null; // 当前专题 key
@@ -1614,7 +1614,7 @@ function selectTopic(k){
   const tp=TL_TOPICS.find(x=>x.k===k); if(!tp) return;
   tlTopic=k;
   $('#tl-empty').hidden=true; $('#tl-event-view').hidden=true; $('#tl-subbar').hidden=true;
-  $('#dynbar .dyn,#btn-timeline').forEach(el=>el.classList.remove('active'));
+  $$('#dynbar .dyn,#btn-timeline').forEach(el=>el.classList.remove('active'));
   $('#btn-timeline').classList.add('active');
   document.querySelectorAll('#tl-topics .tl-topic').forEach(el=>el.classList.toggle('on',el.dataset.k===k));
   // 收集跨朝代事件：{k dyn key, dyn name, color, i index, e event}
